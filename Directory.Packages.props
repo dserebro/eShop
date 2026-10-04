@@ -4,7 +4,7 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <!-- Version together with Aspire -->
+    <!-- Version together with Aspire. Aspire.Hosting.Dotnet, Aspire.Hosting.Foundry and Aspire.Azure.AI.OpenAI have no stable release on nuget.org as of 2026-10 (latest is 13.6.0-preview.1.*); keep the preview pin until Aspire ships a stable version. -->
     <PackageVersion Include="Aspire.Hosting.Dotnet" Version="13.6.0-preview.1.26479.8" />
     <PackageVersion Include="Aspire.Hosting.Azure.AppContainers" Version="13.6.0" />
     <PackageVersion Include="Aspire.Hosting.Foundry" Version="13.6.0-preview.1.26479.8" />
@@ -58,7 +58,8 @@
     <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.19.1" />
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.19.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.19.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.15.0-beta.1" />
+    <!-- No stable release exists for GrpcNetClient instrumentation (beta only); 1.19.1-beta.1 is the latest as of 2026-10. -->
+    <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.19.1-beta.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.19.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.19.0" />
     <!-- IdentityServer -->
