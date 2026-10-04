@@ -17,7 +17,12 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never' }]],
+  reporter: [
+    ['html', { open: 'never' }],
+    ...(process.env.MCODE_DIR
+      ? [['json', { outputFile: `${process.env.MCODE_DIR}/fe_testing/playwright-results.json` }] as ['json', { outputFile: string }]]
+      : []),
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -44,7 +49,7 @@ export default defineConfig({
     },
     {
       name: 'e2e tests without logged in',
-      testMatch: ['**/BrowseItemTest.spec.ts'],
+      testMatch: ['**/BrowseItemTest.spec.ts', '**/CatalogBrowse.spec.ts'],
     }
     // {
     //   name: 'chromium',
