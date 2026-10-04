@@ -7,9 +7,13 @@
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <ImplicitUsings>enable</ImplicitUsings>
-    <!-- Temporarily disable security warnings for transitive packages. -->
-    <NoWarn>NU1901;NU1902;NU1903;NU1904</NoWarn>
     <UseArtifactsOutput>true</UseArtifactsOutput>
+  </PropertyGroup>
+
+  <!-- NuGet audit advisories cannot be evaluated for the MAUI projects on the web gate (no MAUI workloads).
+       Suppress NU1901-NU1904 only for them until the MAUI alignment milestone (6) updates their packages and removes this. -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'ClientApp' Or '$(MSBuildProjectName)' == 'HybridApp' Or '$(MSBuildProjectName)' == 'ClientApp.UnitTests'">
+    <NoWarn>$(NoWarn);NU1901;NU1902;NU1903;NU1904</NoWarn>
   </PropertyGroup>
 
   <!-- Enable OpenAI OpenTelemetry so OpenAI calls participate in tracing and metrics. -->
