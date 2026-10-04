@@ -21,9 +21,6 @@ updates:
           - "Azure.*"
           - "Microsoft.Azure.*"
           - "Microsoft.Extensions.Azure"
-      AspNetCoreHealthChecks:
-        patterns:
-          - "AspNetCore.HealthChecks.*"
       AspNetCore:
         patterns:
           - "Microsoft.AspNetCore.*"
