@@ -46,14 +46,11 @@
     <PackageVersion Include="Pgvector.EntityFrameworkCore" Version="0.3.0" />
     <!-- Version together with runtime -->
     <PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.12" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.12" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
     <!-- dotnet/extensions packages -->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.10.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="10.10.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="10.10.0" />
-    <!-- Xabaril packages -->
-    <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="9.0.0" />
     <!-- AI -->
     <PackageVersion Include="CommunityToolkit.Aspire.Hosting.Ollama" Version="13.1.1" />
     <PackageVersion Include="CommunityToolkit.Aspire.OllamaSharp" Version="13.1.1" />
@@ -70,21 +67,16 @@
     <PackageVersion Include="Duende.IdentityServer.EntityFramework" Version="7.3.2" />
     <PackageVersion Include="Duende.IdentityServer.EntityFramework.Storage" Version="7.3.2" />
     <PackageVersion Include="Duende.IdentityServer.Storage" Version="7.3.2" />
-    <!-- Scaffolding -->
-    <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
     <!-- Grpc -->
     <PackageVersion Include="Grpc.AspNetCore" Version="2.84.0" />
     <PackageVersion Include="Grpc.Net.ClientFactory" Version="2.84.0" />
     <PackageVersion Include="Grpc.Tools" Version="2.84.0" />
     <!-- Miscellaneous -->
-    <PackageVersion Include="Dapper" Version="2.1.89" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageVersion Include="Google.Protobuf" Version="3.36.2" />
     <PackageVersion Include="Microsoft.Web.LibraryManager.Build" Version="3.0.114" />
-    <PackageVersion Include="System.Reflection.TypeExtensions" Version="4.7.0" />
     <PackageVersion Include="xunit.v3.mtp-v2" Version="3.2.2" />
-    <PackageVersion Include="IdentityModel" Version="7.0.0" />
     <PackageVersion Include="Scalar.AspNetCore" Version="2.17.10" />
     <!-- Before license change -->
     <PackageVersion Include="MediatR" Version="13.1.0" />
