@@ -493,3 +493,12 @@ $RECYCLE.BIN/
 /playwright/.auth/
 /user.json
 .azure
+
+# Functional testing (pytest) artifacts
+.venv/
+venv/
+.pytest_cache/
+*.pyo
+
+# Windows reserved-name artifact
+NUL
