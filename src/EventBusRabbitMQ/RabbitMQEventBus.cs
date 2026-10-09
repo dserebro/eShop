@@ -232,7 +232,10 @@ public sealed class RabbitMQEventBus(
             {
                 logger.LogInformation("Starting RabbitMQ connection on a background thread");
 
-                _rabbitMQConnection = serviceProvider.GetRequiredService<IConnection>();
+                var connectionFactory = serviceProvider.GetRequiredService<IConnectionFactory>();
+                _rabbitMQConnection = await _pipeline.ExecuteAsync(
+                    async ct => await connectionFactory.CreateConnectionAsync(ct),
+                    cancellationToken);
                 if (!_rabbitMQConnection.IsOpen)
                 {
                     return;
