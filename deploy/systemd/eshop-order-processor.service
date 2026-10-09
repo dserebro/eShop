@@ -7,6 +7,7 @@ PartOf=eshop.target
 [Service]
 Type=exec
 EnvironmentFile=/etc/eshop/eshop.env
+Environment=ASPNETCORE_URLS=http://localhost:16888
 WorkingDirectory=/opt/eshop/OrderProcessor
 ExecStart=/usr/bin/dotnet OrderProcessor.dll
 ExecStartPost=/bin/bash -c 'retries=0; until curl -sf http://localhost:16888/health > /dev/null 2>&1 || [ $retries -ge 30 ]; do sleep 2; retries=$((retries+1)); done; curl -sf http://localhost:16888/health > /dev/null 2>&1'
