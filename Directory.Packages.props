@@ -4,10 +4,6 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <!-- Aspire packages retained for not-yet-migrated services and functional tests -->
-    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.6.0" />
-    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="13.6.0" />
-    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.6.0" />
     <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.6.0" />
     <PackageVersion Include="Aspire.StackExchange.Redis" Version="13.6.0" />
     <PackageVersion Include="Aspire.Azure.AI.OpenAI" Version="13.6.0-preview.1.26479.8" />
