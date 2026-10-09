@@ -57,21 +57,21 @@ echo "PostgreSQL service is running."
 PG_HBA="/etc/postgresql/16/main/pg_hba.conf"
 
 if [ -f "$PG_HBA" ]; then
-    # Ensure local connections use md5 (password) authentication for the eshop user
-    if ! sudo grep -q "^local\s\+all\s\+${PGUSER}\s\+md5" "$PG_HBA" 2>/dev/null; then
+    # Ensure local connections use scram-sha-256 (password) authentication for the eshop user
+    if ! sudo grep -q "^local\s\+all\s\+${PGUSER}\s\+scram-sha-256" "$PG_HBA" 2>/dev/null; then
         echo "Configuring pg_hba.conf for password-based local connections..."
         # Insert eshop user rule before the default local rules
-        sudo sed -i "/^# \"local\" is for Unix domain socket connections only/a local   all             ${PGUSER}                                md5" "$PG_HBA"
+        sudo sed -i "/^# \"local\" is for Unix domain socket connections only/a local   all             ${PGUSER}                                scram-sha-256" "$PG_HBA"
         sudo systemctl reload postgresql
         echo "pg_hba.conf updated and PostgreSQL reloaded."
     else
         echo "pg_hba.conf already configured for ${PGUSER}."
     fi
 
-    # Also ensure host connections (localhost TCP) use md5
-    if ! sudo grep -q "^host\s\+all\s\+${PGUSER}\s\+127.0.0.1/32\s\+md5" "$PG_HBA" 2>/dev/null; then
+    # Also ensure host connections (localhost TCP) use scram-sha-256
+    if ! sudo grep -q "^host\s\+all\s\+${PGUSER}\s\+127.0.0.1/32\s\+scram-sha-256" "$PG_HBA" 2>/dev/null; then
         echo "Adding TCP/IP localhost rule for ${PGUSER}..."
-        sudo sed -i "/^# IPv4 local connections:/a host    all             ${PGUSER}        127.0.0.1/32            md5" "$PG_HBA"
+        sudo sed -i "/^# IPv4 local connections:/a host    all             ${PGUSER}        127.0.0.1/32            scram-sha-256" "$PG_HBA"
         sudo systemctl reload postgresql
         echo "TCP/IP rule added and PostgreSQL reloaded."
     else
