@@ -7,8 +7,8 @@ set -euo pipefail
 # Idempotent: safe to re-run.
 # =============================================================================
 
-RABBIT_USER="eshop"
-RABBIT_PASS="eshoppass"
+RABBIT_USER="${ESHOP_RABBIT_USER:-eshop}"
+RABBIT_PASS="${ESHOP_RABBIT_PASS:-eshoppass}"
 RABBIT_VHOST="/eshop"
 
 echo "=== Provisioning RabbitMQ 3.13 ==="

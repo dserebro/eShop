@@ -6,6 +6,7 @@ and that the OrderProcessor's NpgsqlDataSource can connect to orderingdb.
 Tests use direct PostgreSQL connections to verify the databases are accessible
 with the configured credentials.
 """
+import os
 import psycopg2
 import pytest
 
@@ -13,8 +14,8 @@ import pytest
 # Connection parameters matching the lifecycle env_vars.json
 DB_HOST = "localhost"
 DB_PORT = 5432
-DB_USER = "eshop"
-DB_PASSWORD = "eshoppass"
+DB_USER = os.environ.get("ESHOP_DB_USER", "eshop")
+DB_PASSWORD = os.environ.get("ESHOP_DB_PASS", "eshoppass")
 
 
 @pytest.fixture(autouse=True)

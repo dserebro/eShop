@@ -12,6 +12,9 @@ echo "  eShop Infrastructure Smoke Test"
 echo "============================================================"
 echo ""
 
+ESHOP_DB_USER="${ESHOP_DB_USER:-eshop}"
+ESHOP_DB_PASS="${ESHOP_DB_PASS:-eshoppass}"
+
 PASS=0
 FAIL=0
 
@@ -57,10 +60,10 @@ for DB in catalogdb identitydb orderingdb webhooksdb; do
 done
 
 # Check eshop user can connect
-if PGPASSWORD=eshoppass psql -h 127.0.0.1 -U eshop -d catalogdb -c "SELECT 1;" >/dev/null 2>&1; then
-    check "User 'eshop' can connect to catalogdb" 0
+if PGPASSWORD="${ESHOP_DB_PASS}" psql -h 127.0.0.1 -U "${ESHOP_DB_USER}" -d catalogdb -c "SELECT 1;" >/dev/null 2>&1; then
+    check "User '${ESHOP_DB_USER}' can connect to catalogdb" 0
 else
-    check "User 'eshop' can connect to catalogdb" 1
+    check "User '${ESHOP_DB_USER}' can connect to catalogdb" 1
 fi
 
 echo ""

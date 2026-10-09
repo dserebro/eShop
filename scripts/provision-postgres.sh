@@ -7,8 +7,8 @@ set -euo pipefail
 # Idempotent: safe to re-run.
 # =============================================================================
 
-PGUSER="eshop"
-PGPASS="eshoppass"
+PGUSER="${ESHOP_DB_USER:-eshop}"
+PGPASS="${ESHOP_DB_PASS:-eshoppass}"
 DATABASES=("catalogdb" "identitydb" "orderingdb" "webhooksdb")
 
 echo "=== Provisioning PostgreSQL 16 ==="

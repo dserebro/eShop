@@ -10,6 +10,7 @@ The RabbitMQ management API (port 15672) is used to observe the application's
 runtime behavior on the message broker.
 """
 import json
+import os
 import time
 import uuid
 
@@ -17,7 +18,7 @@ import pytest
 import requests
 
 RABBITMQ_MGMT_URL = "http://localhost:15672"
-RABBITMQ_AUTH = ("eshop", "eshoppass")
+RABBITMQ_AUTH = (os.environ.get("ESHOP_RABBIT_USER", "eshop"), os.environ.get("ESHOP_RABBIT_PASS", "eshoppass"))
 EXCHANGE_NAME = "eshop_event_bus"
 VHOST_ENCODED = "%2f"
 
