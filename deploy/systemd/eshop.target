@@ -1,6 +1,7 @@
 [Unit]
 Description=eShop Application Services
 After=network.target postgresql.service rabbitmq-server.service redis-server.service
+Wants=eshop-payment-processor.service eshop-order-processor.service
 
 [Install]
 WantedBy=multi-user.target
