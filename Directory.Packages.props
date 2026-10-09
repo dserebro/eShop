@@ -4,7 +4,10 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <!-- Aspire client packages retained for not-yet-migrated services -->
+    <!-- Aspire packages retained for not-yet-migrated services and functional tests -->
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.6.0" />
+    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="13.6.0" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.6.0" />
     <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.6.0" />
     <PackageVersion Include="Aspire.StackExchange.Redis" Version="13.6.0" />
     <PackageVersion Include="Aspire.Azure.AI.OpenAI" Version="13.6.0-preview.1.26479.8" />
@@ -41,6 +44,7 @@
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.12" />
     <!-- dotnet/extensions packages -->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.10.0" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="10.10.0" />
     <!-- Xabaril packages -->
     <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="9.0.0" />
     <!-- AI -->
@@ -66,7 +70,7 @@
     <PackageVersion Include="Grpc.Tools" Version="2.84.0" />
     <!-- Direct infrastructure client packages -->
     <PackageVersion Include="RabbitMQ.Client" Version="7.1.2" />
-    <PackageVersion Include="Npgsql" Version="9.0.3" />
+    <PackageVersion Include="Npgsql" Version="10.0.3" />
     <!-- Miscellaneous -->
     <PackageVersion Include="Dapper" Version="2.1.89" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
