@@ -29,12 +29,6 @@ public static class RabbitMqDependencyInjectionExtensions
             return factory;
         });
 
-        builder.Services.AddSingleton(sp =>
-        {
-            var factory = sp.GetRequiredService<IConnectionFactory>();
-            return factory.CreateConnectionAsync().GetAwaiter().GetResult();
-        });
-
         // RabbitMQ.Client doesn't have built-in support for OpenTelemetry, so we need to add it ourselves
         builder.Services.AddOpenTelemetry()
            .WithTracing(tracing =>
