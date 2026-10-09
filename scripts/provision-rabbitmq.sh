@@ -107,11 +107,8 @@ fi
 echo "Setting permissions for '${RABBIT_USER}' on '${RABBIT_VHOST}'..."
 sudo rabbitmqctl set_permissions -p "${RABBIT_VHOST}" "${RABBIT_USER}" ".*" ".*" ".*"
 
-# Also set permissions on default vhost for compatibility
-sudo rabbitmqctl set_permissions -p "/" "${RABBIT_USER}" ".*" ".*" ".*" 2>/dev/null || true
-
-# Set user tags (management access)
-sudo rabbitmqctl set_user_tags "${RABBIT_USER}" administrator 2>/dev/null || true
+# Set user tags (management UI read access)
+sudo rabbitmqctl set_user_tags "${RABBIT_USER}" management 2>/dev/null || true
 
 # ---------------------------------------------------------------------------
 # 6. Verify service is running

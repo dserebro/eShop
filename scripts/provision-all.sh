@@ -97,7 +97,7 @@ echo "ConnectionStrings__catalogdb=Host=localhost;Database=catalogdb;Username=es
 echo "ConnectionStrings__orderingdb=Host=localhost;Database=orderingdb;Username=eshop;Password=eshoppass"
 echo "ConnectionStrings__identitydb=Host=localhost;Database=identitydb;Username=eshop;Password=eshoppass"
 echo "ConnectionStrings__webhooksdb=Host=localhost;Database=webhooksdb;Username=eshop;Password=eshoppass"
-echo "ConnectionStrings__EventBus=amqp://eshop:eshoppass@localhost:5672"
+echo "ConnectionStrings__EventBus=amqp://eshop:eshoppass@localhost:5672/%2Feshop"
 echo "ConnectionStrings__redis=localhost:6379"
 echo ""
 echo "============================================================"
