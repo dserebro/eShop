@@ -13,7 +13,7 @@ public static class Extensions
 
         var orderingConnectionString = builder.Configuration.GetConnectionString("orderingdb")
             ?? throw new InvalidOperationException("Connection string 'orderingdb' not found.");
-        builder.Services.AddSingleton(new NpgsqlDataSourceBuilder(orderingConnectionString).Build());
+        builder.Services.AddSingleton<NpgsqlDataSource>(_ => new NpgsqlDataSourceBuilder(orderingConnectionString).Build());
 
         builder.Services.AddOptions<BackgroundTaskOptions>()
             .BindConfiguration(nameof(BackgroundTaskOptions));
