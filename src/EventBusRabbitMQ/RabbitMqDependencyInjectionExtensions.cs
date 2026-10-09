@@ -1,5 +1,6 @@
 ﻿using eShop.EventBusRabbitMQ;
 using Microsoft.Extensions.DependencyInjection;
+using RabbitMQ.Client;
 
 namespace Microsoft.Extensions.Hosting;
 
@@ -18,7 +19,21 @@ public static class RabbitMqDependencyInjectionExtensions
     {
         ArgumentNullException.ThrowIfNull(builder);
 
-        builder.AddRabbitMQClient(connectionName);
+        var connectionString = builder.Configuration.GetConnectionString(connectionName)
+            ?? throw new InvalidOperationException($"Connection string '{connectionName}' not found.");
+
+        builder.Services.AddSingleton<IConnectionFactory>(_ =>
+        {
+            var factory = new ConnectionFactory();
+            factory.Uri = new Uri(connectionString);
+            return factory;
+        });
+
+        builder.Services.AddSingleton(sp =>
+        {
+            var factory = sp.GetRequiredService<IConnectionFactory>();
+            return factory.CreateConnectionAsync().GetAwaiter().GetResult();
+        });
 
         // RabbitMQ.Client doesn't have built-in support for OpenTelemetry, so we need to add it ourselves
         builder.Services.AddOpenTelemetry()
