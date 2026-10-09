@@ -1,0 +1,30 @@
+[Unit]
+Description=eShop Payment Processor Service
+After=network.target rabbitmq-server.service
+Requires=rabbitmq-server.service
+PartOf=eshop.target
+
+[Service]
+Type=notify
+EnvironmentFile=/etc/eshop/eshop.env
+WorkingDirectory=/opt/eshop/PaymentProcessor
+ExecStart=/usr/bin/dotnet PaymentProcessor.dll
+ExecStartPost=/bin/bash -c 'retries=0; until curl -sf http://localhost:5226/health > /dev/null 2>&1 || [ $retries -ge 30 ]; do sleep 2; retries=$((retries+1)); done; curl -sf http://localhost:5226/health > /dev/null 2>&1'
+Restart=on-failure
+RestartSec=10
+User=eshop
+Group=eshop
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/eshop/PaymentProcessor
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=eshop-payment-processor
+
+[Install]
+WantedBy=eshop.target
