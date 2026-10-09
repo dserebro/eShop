@@ -5,7 +5,7 @@ Requires=postgresql.service rabbitmq-server.service
 PartOf=eshop.target
 
 [Service]
-Type=notify
+Type=exec
 EnvironmentFile=/etc/eshop/eshop.env
 WorkingDirectory=/opt/eshop/OrderProcessor
 ExecStart=/usr/bin/dotnet OrderProcessor.dll

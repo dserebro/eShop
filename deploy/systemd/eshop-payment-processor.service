@@ -5,7 +5,7 @@ Requires=rabbitmq-server.service
 PartOf=eshop.target
 
 [Service]
-Type=notify
+Type=exec
 EnvironmentFile=/etc/eshop/eshop.env
 WorkingDirectory=/opt/eshop/PaymentProcessor
 ExecStart=/usr/bin/dotnet PaymentProcessor.dll

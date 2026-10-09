@@ -139,7 +139,7 @@ When adding a new eShop microservice, follow this pattern:
    PartOf=eshop.target
 
    [Service]
-   Type=notify
+   Type=exec
    EnvironmentFile=/etc/eshop/eshop.env
    WorkingDirectory=/opt/eshop/<ServiceName>
    ExecStart=/usr/bin/dotnet <ServiceName>.dll
